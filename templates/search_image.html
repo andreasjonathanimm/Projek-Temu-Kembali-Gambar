@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Pencarian Gambar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <a href="/" class="kembali">Kembali</a>
+    <h1>Pencarian Gambar</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <div class="btn-index3">
+            <button type="submit">Cari</button>
+        </div>    
+        
+    </form>
+
+    {% if query_image %}
+        <h2>Gambar yang dicari:</h2>
+        <img src="{{ query_image }}" alt="Query Image" style="max-width: 250px;">
+    {% endif %}
+
+    {% if results %}
+        <h2>Hasil Pencarian:</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+            {% for img, similarity in results %}
+                <div style="margin: 10px; text-align: center;">
+                    <img src="{{ img }}" alt="Hasil Gambar" class="hasil-gambar" loading="lazy">
+                    <p>Similarity: {{ similarity | round(4) }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temu Kembali Citra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Temu Kembali Citra </h1>
+
+    <h2>Pencarian Gambar</h2>
+    <form action="/search_image" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <div class="btn-index">
+            <button type="submit" class="btn-index">Cari dengan Gambar</button>
+        </div>
+    </form>
+
+    <h2>Pencarian Label</h2>
+    <form action="/search_label" method="POST">
+        <input type="text" name="label" placeholder="Masukkan label, contoh: red, fruit" required>
+        <div class="btn-index2">
+            <button type="submit">Cari dengan Label</button>
+        </div>
+    </form>
+</body>
+</html>
